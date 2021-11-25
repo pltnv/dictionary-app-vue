@@ -5,12 +5,14 @@
         </div>
         <div class="cardResult">
             <div class="word">
-                {{gotData[0].word}}
+                {{dict.word}}
             </div>
             <div class="def">
-               {{gotData[0].meanings[0].definitions[0].definition}}
+                {{dict.defFirst}} <br>
+                
+
             </div>
-            <button @click='getData()' class="btn">Learn more</button>
+            <button @click='getName()' class="btn">Learn more</button>
              <br>
 
 
@@ -27,8 +29,15 @@
             return {
                 kek: '30',
                 inputSearch: 'hello',
-                gotData: '',
+                gotData: [],
                 url: 'https://api.dictionaryapi.dev/api/v2/entries/en/',
+                dict: {
+                    defFirst: 'Первый текст',
+                    exampleDef: 'Пример',
+                    defSecond: 'Второй пример',
+                    defThird: 'Третий пример',
+                    defFourth: 'Четвертый пример',
+                }
 
 
             }
@@ -45,10 +54,26 @@
         //     this.gotData.push(res);
         // },
         methods: {
-            getData() {
-                    fetch(`${this.url}${this.inputSearch}`)
-                        .then(res => res.json())
-                        .then(data => this.gotData = data)
+            // async getData() {
+            //         fetch(`${this.url}${this.inputSearch}`)
+            //             .then(res => res.json())
+            //             .then(data => this.gotData = data)
+            // },
+            async getName(){
+                const res = await fetch('https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=' + this.inputSearch, {
+                    "headers": {
+                        "x-rapidapi-host": "mashape-community-urban-dictionary.p.rapidapi.com",
+                        "x-rapidapi-key": "e386ac985amsh5bcce1772131ac4p140bc7jsn4d2975289e9e"
+                    }
+                });
+                const data = await res.json();
+                this.dict.defFirst = data.list[1].definition
+                this.dict.example = data.list[1].example
+                this.dict.word = data.list[1].word
+                this.dict.defFirst = data.list[6].definition
+                this.dict.defThird = data.list[5].definition
+                this.dict.defFourth = data.list[4].definition
+
             }
         }
 
