@@ -2,7 +2,6 @@
     <div>
         <SearchCard/>
     </div>
-
 </template>
 
 
@@ -28,13 +27,10 @@
                 },
                 visibleMore: 'False',
                 audioSrc: '',
-
-
             }
         },
         methods: {
             async getName() {
-
                 const res = await fetch('https://api.dictionaryapi.dev/api/v2/entries/en/' + this.inputSearch);
                 const data = await res.json();
                 this.dict.defFirst = data[0].meanings[0].definitions[0].definition
@@ -46,11 +42,8 @@
                 this.dict.synonyms = data[0].meanings[0].definitions[0].synonyms.join(', ')
                 this.inputSearch = ''
             }
-
         }
     }
-
-
 </script>
 
 

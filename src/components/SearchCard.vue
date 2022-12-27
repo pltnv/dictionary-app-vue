@@ -2,43 +2,31 @@
     <div class="container">
         <div class="search">
             <input type="text" placeholder="Write a word" v-model="inputSearch" >
-            <button class="btn"  @click='getName()'> Search</button>
+            <button class="btn"  @click='getName()'>Search</button>
         </div>
         <div v-if="dict" class="cardResult" >
             <div class="word">
-                {{dict.word}} : {{dict.phonetics}}
+                {{ dict.word }} : {{ dict.phonetics }}
             </div>
             <div class="def">
                 {{dict.defFirst}} <br>
             </div>
             <button class="btn" @click="visibleMore = !visibleMore">Learn more</button>
-<!--            <router-link to="/about">Learn more</router-link>-->
             <div class="more" v-if="!visibleMore">
                 <div>
-                    <span class="phonetic"> Phonetic</span> {{dict.phonetics}}
-<!--                    <audio :src="audioSrc" preload="auto">hey</audio>-->
+                    <span class="phonetic">Phonetic</span> {{ dict.phonetics }}
                 </div>
                 <div>
-                    <span class="origin">Origin</span>  {{dict.origin}}
+                    <span class="origin">Origin</span>  {{ dict.origin }}
                 </div>
-<!--                <router-link to="/about">One more</router-link>-->
-
                 <br>
                 <div>
-                    <span>{{dict.word}}</span>
-                    <div> Definition: {{dict.defSecond}}</div>
-                    <div><span>Synonyms:</span> {{dict.synonyms}}</div>
-
-
+                    <span>{{ dict.word }}</span>
+                    <div> Definition: {{ dict.defSecond }}</div>
+                    <div><span> Synonyms:</span> {{ dict.synonyms }}</div>
                 </div>
-
             </div>
-
-
         </div>
-
-
-
     </div>
 </template>
 

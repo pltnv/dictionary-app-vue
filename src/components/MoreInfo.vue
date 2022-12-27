@@ -1,30 +1,24 @@
 <template>
     <div class="container">
         <div class="cardInfo">
-            <span>  {{word}}</span>
+            <span> {{word}} </span>
             <hr>
             <div>
-<!--                <div> {{defSecond}}</div>-->
-<!--                <div>{{synonyms}}</div>-->
-
+                <div> {{ defSecond }}</div>
+                <div>{{ synonyms }}</div>
             </div>
 
         </div>
-
     </div>
 </template>
 
 <script>
     export default {
-
-        name: "MoreInfo.vue",
-        data() {
-            return {
-
-            }
-        },
-        props: ['word']
-
+      name: "MoreInfo.vue",
+      props: ['word'],
+      data() {
+        return {}
+      }
     }
 </script>
 

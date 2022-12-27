@@ -5,12 +5,10 @@
   </div>
 </template>
 
-
 <script>
   import MoreInfo from "../components/MoreInfo";
 
   export default {
-
     components: {
       MoreInfo
     }
